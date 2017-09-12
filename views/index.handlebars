@@ -1,0 +1,50 @@
+<a href="teste1">Ir para teste1</a>
+<br>
+<br>
+<a href="formNovo">Ir para testeform</a>
+<br>
+<br>
+<p> >>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< </p>
+<table border="1">
+  <!-- coluna topo -->
+  <tr>
+    <!-- String -->
+    <td><p>NOME</p></td>
+    <!-- String -->
+    <td><p>EMAIL</p></td>
+    <!-- String -->
+    <td><p>TELEFONE</p></td>
+    <!-- date -->
+    <td><p>DATA NASC</p></td>
+    <!-- Double -->
+    <td><p>VLR</p></td>
+    <!-- Boolean -->
+    <td><p>ATIVO?</p></td>
+    <!-- Timestamp -->
+    <td><p>ULT ATUAL.</p></td>
+    <!-- Binary data -->
+    <!-- Code -->
+    <!-- Regular expression -->
+    <!-- deleção -->
+    <td><p>DELEÇÃO</p></td>
+    <!-- Atualização -->
+    <td><p>ATUALIZAÇÃO</p></td>
+  </tr>
+  <!-- aqui vai ficar o FOREACH -->
+  <tr>
+    <td><p>{{nome}}</p></td>
+    <td><p>{{email}}</p></td>
+    <td><p>{{telefone}}</p></td>
+    <td><p>{{data}}</p></td>
+    <td><p>{{valor}}</p></td>
+    <td><p>{{ativo}}</p></td>
+    <td><p>{{logTimestamp}}</p></td>
+    <!-- <td><p>{{??}}</p></td> -->
+    <td><p><button type="button" name="deletar">Deletar</button></p></td>
+    <!-- <td><p>{{??}}</p></td> -->
+    <td><p><form class="" action="/formAlteracao" method="get">
+      <button type="button" name="atualizar">Atualizar</button>
+    </form></p></td>
+  </tr>
+  <!-- aqui termina o FOREACH -->
+</table>

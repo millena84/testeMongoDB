@@ -1,0 +1,32 @@
+{
+  "name": "testemongoose",
+  "version": "1.0.0",
+  "description": "teste modulo mongoose (para usar node com mongodb)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/millena84/testemongoose.git"
+  },
+  "keywords": [
+    "teste",
+    "mongodb",
+    "mongoose",
+    "nodejs"
+  ],
+  "author": "millena84",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/millena84/testemongoose/issues"
+  },
+  "homepage": "https://github.com/millena84/testemongoose#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.5",
+    "mongoose": "^4.11.10"
+  }
+}
