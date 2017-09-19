@@ -1,32 +1,31 @@
 {
-  "name": "testemongoose",
+  "name": "exemplomongodb",
   "version": "1.0.0",
-  "description": "teste modulo mongoose (para usar node com mongodb)",
+  "description": "teste interacao backend (nodejs) - banco de dados (mongodb)",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/millena84/testemongoose.git"
+    "url": "git+https://github.com/millena84/testeMongoDB.git"
   },
-  "keywords": [
-    "teste",
-    "mongodb",
-    "mongoose",
-    "nodejs"
-  ],
   "author": "millena84",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/millena84/testemongoose/issues"
+    "url": "https://github.com/millena84/testeMongoDB/issues"
   },
-  "homepage": "https://github.com/millena84/testemongoose#readme",
+  "homepage": "https://github.com/millena84/testeMongoDB#readme",
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.15.5",
-    "mongoose": "^4.11.10"
+    "mongoose": "^4.11.11",
+    "nodemon": "^1.12.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1"
   }
 }

@@ -1,7 +1,5 @@
-<a href="teste1">Ir para teste1</a>
-<br>
-<br>
-<a href="formNovo">Ir para testeform</a>
+
+<a href="formNovo">Novo registro</a>
 <br>
 <br>
 <p> >>>>>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< </p>
@@ -30,7 +28,7 @@
     <!-- Atualização -->
     <td><p>ATUALIZAÇÃO</p></td>
   </tr>
-  <!-- aqui vai ficar o FOREACH -->
+  {{#each teste}}
   <tr>
     <td><p>{{nome}}</p></td>
     <td><p>{{email}}</p></td>
@@ -38,13 +36,14 @@
     <td><p>{{data}}</p></td>
     <td><p>{{valor}}</p></td>
     <td><p>{{ativo}}</p></td>
-    <td><p>{{logTimestamp}}</p></td>
+    <td><p>{{ultatu}}</p></td>
     <!-- <td><p>{{??}}</p></td> -->
-    <td><p><button type="button" name="deletar">Deletar</button></p></td>
-    <!-- <td><p>{{??}}</p></td> -->
-    <td><p><form class="" action="/formAlteracao" method="get">
+    <td><p><a href="/del/{{_id}}">
+      <button type="button" name="deletar">Deletar</button>
+    </a></p></td>
+    <td><p><a href="/{{_id}}">
       <button type="button" name="atualizar">Atualizar</button>
-    </form></p></td>
+    </a></p></td>
   </tr>
-  <!-- aqui termina o FOREACH -->
+  {{/each}}
 </table>

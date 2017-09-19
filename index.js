@@ -16,6 +16,10 @@ app.engine('handlebars', handlebars({defaultLayout: 'main'}));
 // --> liga o handlebars para ele ser o mecanismo que fará a interpretação e apresentação do html quando forem feitas as requisições:
 app.set('view engine', 'handlebars');
 
+
+// imprto o mongoose:
+const mongoose = require('mongoose');
+
 // BODY-PARSER:
 // --> importar o módulo o módulo body-parser atribuindo a uma variável
 const bodyParser = require('body-parser');
@@ -26,78 +30,76 @@ app.use(bodyParser.urlencoded());
 // --> indica que a aplicação suporta corpo de envio de dados formato JSON
 app.use(bodyParser.json());
 
-// UTIL - para mostrar os objetos corretamente na log:
-const util = require('util');
 
-// JSON FILE: para gravar corretamente os usuarios? :-o
-//var jsonfile = require('jsonfile');
+// conectar ao banco:
+// mongoose.connect('mongodb://localhost/mastertech');127.0.0.1
+
+mongoose.connect('mongodb://localhost/27017/test');
+
+// Schema
+const testeMongoose = mongoose.model('testeMongoose',
+{
+  nome: String,
+  email: String,
+  telefone: Number,
+  datanasc: Date,
+  valor: Number,
+  ativo: String,
+  ultatu: Date
+});
+
+/*
+db.testeMongoose.find()
+{ "_id" : ObjectId("59bdb699aea082cbece512ee"),
+  "nome" : "Millena teste",
+  "email" : "millena@teste.com",
+  "telefone" : "992764447",
+  "datanasc" : "1984-07-30",
+  "valor" : "300.00",
+  "ativo" : "true",
+  "ultatu" : ISODate("2017-09-16T23:41:13.169Z") }
+*/
+
+// inicio o servidor. Enquanto o arquivo index.js nao for executado via pm2 no terminal, meu localhost estará indisponivel.
+// app.listen significa: pegue a funcao listen da classe express e use no meu codigo.
+var server = app.listen(3001, () => {
+  // address nao aparece no log
+  var port = server.address().port;
+  console.log('>>>>>> O servidor do express foi inicializado na porta ' + port);
+
+});
 
 
-// JSONS:
-// usuarios:
-var usuariosJson = require('./data/usuarios2.json');
-
-//==========================================================================================
-// INDEX:
-// executar a função get do express. Ela aceita 2 parâmetros: a URL e uma função de callback para ser executada após identificada a URL.
-// método: GET ()
-// crio uma rota html index que vai reinderizar uma página para abrir no navegador
 app.get('/', (request, response) => {
-  console.log('>>>> Método GET, página /index, função render');
-  // response.render significa: quando eu entrar na rota localhost:3000, responda para o servidor formatando a página index e mostre para o client
-  // ao clicar no localhost:3000, estamos fazendo uma requisicao http para o express, para exibir a index
-  response.render('index', {home: true});
-  //console.log('Entrou na função GET da página index, com request = ' + request.body + ' e response = ' + response.body);
+  console.log('>>> Método GET, página /index, função render');
+
+  testeMongoose.find((erro, teste) => {
+    if (erro) {
+      return response.render('>>>>># XI, DEU RUIM');
+    }
+    response.render('index', { list: teste });
+    console.log('>> log: ' + teste);
+    console.log('>> testeMongoose: ' + testeMongoose);
+  });
+
 });
 
-// TESTE1:
-// método: GET()
-// crio uma rota html teste1 que vai reinderizar uma página para exibir no navegador
-app.get('/teste1', (request, response) => {
-  console.log('>>>> Método GET, página /teste1, função render');
-  response.render('teste1');
-});
-
-// FORMULARIO:
-// método: GET ()
-// apresenta o formulario para receber dados:
 app.get('/formNovo', (request, response) => {
   console.log('>>>> Método GET, página /formNovo, função render');
   response.render('formNovo');
 });
 
-// método: POST (fará o envio de dados via requisição http)
-// crio uma rota html testeform que vai reinderizar uma página para exibir no navegador
+/*
 app.post('/formNovo', (request, response) => {
   console.log('>>>> Método POST, página /formNovo, função render');
 
-  // na hora de exibir essa pagina, vamos usar as informacoes que estavam na requisicao para exibir em outra pagina
   response.render('resposta', request.body);
 
   console.log('>>>> Método POST, página /testeresposta, função render');
 });
 
-// FORMULARIO:
-// método: GET ()
-// apresenta o formulario para receber dados:
 app.get('/formAlteracao', (request, response) => {
   console.log('>>>> Método GET, página /formNovo, função render');
   response.render('formAlteracao');
 });
-
-
-
-
-//=========================================================================================
-
-// inicio o servidor. Enquanto o arquivo index.js nao for executado via pm2 no terminal, meu localhost estará indisponivel.
-// app.listen significa: pegue a funcao listen da classe express e use no meu codigo.
-var server = app.listen(3000, () => {
-  // address nao aparece no log
-  var host = server.address().address;
-  var port = server.address().port;
-  console.log('O servidor do express foi inicializado na porta ' + port + ', no endereço ' + util.inspect(host, {showHidden: false, depth: null}));
-
-});
-
-//
+*/
